@@ -16,7 +16,7 @@ apply plugin: 'java'
 apply plugin: 'org.springframework.boot'
 
 group = 'com.github.yugzan'
-version = '2.0'
+version = 'spring-data-influxdb-2.0'
 sourceCompatibility = 1.8
 
 repositories {
