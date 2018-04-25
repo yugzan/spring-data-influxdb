@@ -21,7 +21,7 @@ public class ReverseProxyInterceptor implements Interceptor {
 
 	public ReverseProxyInterceptor(InfluxDBProperties properties) {
 		//default append an empty string.
-		reversePrefix = Optional.of(properties.getReversePrefix()).orElse("");
+		reversePrefix = Optional.ofNullable(properties.getReversePrefix()).orElse("");
 	}
 
 	@Override
