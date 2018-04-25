@@ -3,7 +3,7 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/3655132cf1784740ac283db42470d8f9)](https://www.codacy.com/app/miwurster/spring-data-influxdb?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=miwurster/spring-data-influxdb&amp;utm_campaign=Badge_Grade)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.miwurster/spring-data-influxdb/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.miwurster/spring-data-influxdb)
 
-Spring Data InfluxDB
+Spring Data InfluxDB (Gradle version)
 --------------------
 
 The primary goal of the [Spring Data](http://projects.spring.io/spring-data/) project is to make it easier to build Spring-powered applications that use new data access technologies such as non-relational databases, map-reduce frameworks, and cloud based data services.
@@ -11,6 +11,19 @@ The primary goal of the [Spring Data](http://projects.spring.io/spring-data/) pr
 This modules provides integration with the [InfluxDB](https://influxdata.com/) database and wraps the capabilities of the official [influxdb-java](https://github.com/influxdata/influxdb-java) library.
 
 ## Artifacts
+
+### Gradle
+
+```gradle
+  allprojects {
+    repositories {
+      maven { url 'https://jitpack.io' }
+    }
+  }
+  dependencies {
+          compile 'com.github.yugzan:spring-data-influxdb:-SNAPSHOT'
+  }
+```
 
 ### Maven
 
@@ -34,6 +47,7 @@ This modules provides integration with the [InfluxDB](https://influxdata.com/) d
         password: ~
         database: test
         retention-policy: autogen
+        reverse-prefix: ''
     ```
     
     Optionally, you can also configure connections, read, and write timeouts (in seconds):
@@ -111,4 +125,10 @@ Spring Data InfluxDB uses Maven as its build system.
 
 ```bash
 mvn clean install
+```
+
+Spring Data InfluxDB using Gradle.
+
+```bash
+gradle clean build
 ```
