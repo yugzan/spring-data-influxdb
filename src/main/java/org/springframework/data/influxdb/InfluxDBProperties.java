@@ -18,6 +18,8 @@ package org.springframework.data.influxdb;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.validation.annotation.Validated;
+import lombok.Getter;
+import lombok.Setter;
 
 @Validated
 @ConfigurationProperties("spring.influxdb")
@@ -45,6 +47,9 @@ public class InfluxDBProperties
 
   private boolean gzip = false;
 
+  @Getter @Setter
+  private String reversePrefix;
+	
   public String getUrl()
   {
     return url;

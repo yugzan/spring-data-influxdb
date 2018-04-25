@@ -33,6 +33,7 @@ dependencies {
     compile 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.9.4'
     compile 'com.google.guava:guava:21.0'
     compile 'org.influxdb:influxdb-java:2.9'
+	compile 'org.projectlombok:lombok'
 }
 
 gradle.taskGraph.whenReady { graph ->
