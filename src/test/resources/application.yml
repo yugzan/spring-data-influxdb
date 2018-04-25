@@ -9,3 +9,4 @@ spring:
     read-timeout: 5
     write-timeout: 5
     gzip: true
+    reverse-prefix: ''

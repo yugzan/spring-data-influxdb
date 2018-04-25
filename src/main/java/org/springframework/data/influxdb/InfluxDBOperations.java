@@ -18,7 +18,6 @@ package org.springframework.data.influxdb;
 import org.influxdb.dto.Pong;
 import org.influxdb.dto.Query;
 import org.influxdb.dto.QueryResult;
-
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
@@ -71,6 +70,22 @@ public interface InfluxDBOperations<T>
    */
   void query(final Query query, final int chunkSize, final Consumer<QueryResult> consumer);
 
+  /**
+   * Execute a streaming query against the database and return an object.
+   *
+   * @param query     the query to execute
+   * @param clazz the POJO @Measurement class
+   * @return a List of clazz object from QueryResult
+   */
+  <M> List<M> queryAs(final Query query, final Class<M> clazz);
+  /**
+   * Execute a streaming query against the database and return an object.
+   *
+   * @param queryString     the query string to execute
+   * @param clazz the POJO @Measurement class
+   * @return a List of clazz object from QueryResult
+   */
+  <M> List<M> queryAs(final String queryString, final Class<M> clazz);
   /**
    * Ping the database.
    *

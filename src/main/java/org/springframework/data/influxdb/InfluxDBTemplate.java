@@ -20,6 +20,7 @@ import org.influxdb.dto.BatchPoints;
 import org.influxdb.dto.Pong;
 import org.influxdb.dto.Query;
 import org.influxdb.dto.QueryResult;
+import org.influxdb.impl.InfluxDBResultMapper;
 import org.springframework.data.influxdb.converter.PointCollectionConverter;
 import org.springframework.util.Assert;
 
@@ -112,4 +113,21 @@ public class InfluxDBTemplate<T> extends InfluxDBAccessor implements InfluxDBOpe
   {
     return getConnection().version();
   }
+
+@Override
+public <M> List<M> queryAs(Query query, Class<M> clazz) {
+	QueryResult result= getConnection().query(query);
+	InfluxDBResultMapper resultMapper = new InfluxDBResultMapper();
+	List<M> pointList = resultMapper.toPOJO(result, clazz);
+	return pointList;
+}
+
+@Override
+public <M> List<M> queryAs(String queryString, Class<M> clazz) {
+	Query query = new Query(queryString, getDatabase());
+	QueryResult result= getConnection().query(query);
+	InfluxDBResultMapper resultMapper = new InfluxDBResultMapper();
+	List<M> pointList = resultMapper.toPOJO(result, clazz);
+	return pointList;
+}
 }
