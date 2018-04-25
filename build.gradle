@@ -1,0 +1,39 @@
+buildscript {
+	ext {
+		springBootVersion = '1.5.10.RELEASE'
+	}
+	repositories {
+        mavenLocal()
+        maven { url "http://repo.spring.io/release" }
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+apply plugin: 'java'
+//apply plugin: 'org.springframework.boot'
+
+group = 'com.github.yugzan'
+//version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+        mavenLocal()
+        maven { url "http://repo.spring.io/release" }
+        mavenCentral()
+    	jcenter()
+    	maven { url 'https://jitpack.io' }
+}
+
+
+dependencies {
+
+    compile'org.springframework.boot:spring-boot-starter-web'
+    compile 'com.fasterxml.jackson.datatype:jackson-datatype-joda:2.9.4'
+    compile 'com.fasterxml.jackson.datatype:jackson-datatype-guava:2.9.4'
+    compile 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.9.4'
+    compile 'com.google.guava:guava:21.0'
+	compile 'com.github.yugzan:spring-data-influxdb:master-SNAPSHOT'
+    compile 'org.influxdb:influxdb-java:2.9'
+}
