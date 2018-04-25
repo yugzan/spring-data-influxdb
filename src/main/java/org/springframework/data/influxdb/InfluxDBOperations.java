@@ -75,14 +75,16 @@ public interface InfluxDBOperations<T>
    *
    * @param query     the query to execute
    * @param clazz the POJO @Measurement class
+   * @param <M> the type of the class modeled by this {@code Class} and must annotation @Measurement
    * @return a List of clazz object from QueryResult
    */
   <M> List<M> queryAs(final Query query, final Class<M> clazz);
   /**
    * Execute a streaming query against the database and return an object.
-   *
+   * 
    * @param queryString     the query string to execute
    * @param clazz the POJO @Measurement class
+   * @param <M> the type of the class modeled by this {@code Class} and must annotation @Measurement
    * @return a List of clazz object from QueryResult
    */
   <M> List<M> queryAs(final String queryString, final Class<M> clazz);

@@ -12,7 +12,6 @@ import okhttp3.Response;
 
 /**
  * @author yongzan
- * @date 2018/02/05
  */
 public class ReverseProxyInterceptor implements Interceptor {
 	
