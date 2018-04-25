@@ -52,7 +52,8 @@ public class InfluxDBConnectionFactory implements InitializingBean
       final Builder client = new OkHttpClient.Builder()
         .connectTimeout(properties.getConnectTimeout(), TimeUnit.SECONDS)
         .writeTimeout(properties.getWriteTimeout(), TimeUnit.SECONDS)
-        .readTimeout(properties.getReadTimeout(), TimeUnit.SECONDS);
+        .readTimeout(properties.getReadTimeout(), TimeUnit.SECONDS)
+        .addNetworkInterceptor(new ReverseProxyInterceptor(properties));
       connection = InfluxDBFactory
         .connect(properties.getUrl(), properties.getUsername(), properties.getPassword(), client);
       logger.debug("Using InfluxDB '{}' on '{}'", properties.getDatabase(), properties.getUrl());
